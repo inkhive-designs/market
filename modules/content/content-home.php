@@ -4,8 +4,8 @@
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class("archive col-md-4 col-sm-8 col-xs-12"); ?>>
-	
+<article id="post-<?php the_ID(); ?>" <?php post_class("archive col-md-4 col-sm-4"); ?>>
+    <a href="<?php the_permalink(); ?>">
 	<div class="main-article sun-effect"> 
 		<div class="feat-thumb-holder"> 
 		    <?php if (has_post_thumbnail()) : 	
@@ -18,9 +18,10 @@
 	     <div class="main-content">  
 <!-- 		     <h2><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>   -->
 		     <p><?php echo substr(get_the_excerpt(),0,120)."..."; ?></p>  
-		         <a href="<?php the_permalink(); ?>" class="info"><?php _e('Read More','market'); ?></a>  
+		         <a href="<?php the_permalink(); ?>" class="info"><?php esc_html_e('Read More','market'); ?></a>
 	     </div>  
-	</div> 
+	</div>
+    </a>
 	<h2 class="entry-title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>  
 
 </article><!-- #post-## -->

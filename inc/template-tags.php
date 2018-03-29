@@ -31,7 +31,7 @@ function market_content_nav( $nav_id ) {
 
 	?>
 	<nav role="navigation" id="<?php echo esc_attr( $nav_id ); ?>" class="<?php echo $nav_class; ?>">
-		<h1 class="screen-reader-text"><?php _e( 'Post navigation', 'market' ); ?></h1>
+		<h1 class="screen-reader-text"><?php esc_html_e( 'Post navigation', 'market' ); ?></h1>
 
 	<?php if ( is_single() ) : // navigation links for single posts ?>
 
@@ -62,13 +62,12 @@ if ( ! function_exists( 'market_comment' ) ) :
  * Used as a callback by wp_list_comments() for displaying the comments.
  */
 function market_comment( $comment, $args, $depth ) {
-	$GLOBALS['comment'] = $comment;
 
 	if ( 'pingback' == $comment->comment_type || 'trackback' == $comment->comment_type ) : ?>
 
 	<li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
 		<div class="comment-body">
-			<?php _e( 'Pingback:', 'market' ); ?> <?php comment_author_link(); ?> <?php edit_comment_link( __( 'Edit', 'market' ), '<span class="edit-link">', '</span>' ); ?>
+			<?php esc_html_e( 'Pingback:', 'market' ); ?> <?php comment_author_link(); ?> <?php edit_comment_link( __( 'Edit', 'market' ), '<span class="edit-link">', '</span>' ); ?>
 		</div>
 
 	<?php else : ?>
@@ -83,14 +82,14 @@ function market_comment( $comment, $args, $depth ) {
 					<?php printf( '%s', sprintf( '<cite class="fn">%s</cite> on ', get_comment_author_link() ) ); ?>
 					<a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
 						<time datetime="<?php comment_time( 'c' ); ?>">
-							<?php printf( _x( '%1$s', '1: date', 'market' ), get_comment_date() ); ?>
+							<?php printf( _x( '%1$s' ), get_comment_date() ); ?>
 						</time>
 					</a>
 					<?php edit_comment_link( __( 'Edit', 'market' ), '<span class="edit-link">', '</span>' ); ?>
 				</div><!-- .comment-metadata -->
 
 				<?php if ( '0' == $comment->comment_approved ) : ?>
-				<p class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'market' ); ?></p>
+				<p class="comment-awaiting-moderation"><?php esc_html_e( 'Your comment is awaiting moderation.', 'market' ); ?></p>
 				<?php endif; ?>
 			</footer><!-- .comment-meta -->
 

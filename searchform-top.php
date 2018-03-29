@@ -12,5 +12,5 @@
 		<input type="text" class="search-field" placeholder="<?php echo esc_attr_x( 'Search for anything on this site...', 'placeholder', 'market' ); ?>" value="<?php echo esc_attr( get_search_query() ); ?>" name="s">
 	</label>
 	</div>
-	<div class="cancel-search"><?php _e('Cancel','market'); ?></div>
+	<div class="cancel-search"><?php esc_html_e('Cancel','market'); ?></div>
 </form>

@@ -6,7 +6,14 @@ if (jQuery(window).width() > 991 ) {
 				jQuery('#primary-main .row-'+i+' article').inkEqual();
 				}
 	      }, 1250);
-	 }  
+	 }
+	 //
+    if (jQuery(window).width() > 767) {
+        jQuery('.main-article').addClass('sun-effect');
+    } else {
+        jQuery('.main-article').removeClass('sun-effect');
+    }
+	//
 	jQuery('#site-navigation li').find('ul').hide();
 	jQuery('#site-navigation li').hover(
 		function(){

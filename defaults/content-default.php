@@ -13,7 +13,7 @@
 	     <div class="main-content">  
 <!-- 		     <h2><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>   -->
 		     <p><?php echo substr(get_the_excerpt(),0,120)."..."; ?></p>  
-		         <a href="<?php the_permalink(); ?>" class="info"><?php _e('Read More','market'); ?></a>  
+		         <a href="<?php the_permalink(); ?>" class="info"><?php esc_html_e('Read More','market'); ?></a>
 	     </div>  
 	</div> 
 	<h2 class="entry-title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>  

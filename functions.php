@@ -22,6 +22,14 @@ function market_setup() {
 	add_image_size('homepage-banner',400,350,true);
 	
 	add_theme_support('title-tag');
+    add_theme_support( 'custom-header' );
+
+    /**
+     * Add support for core custom logo.
+     *
+     * @link https://codex.wordpress.org/Theme_Logo
+     */
+    add_theme_support( 'custom-logo');
 
 	register_nav_menus( array(
 		'primary' => __( 'Primary Menu', 'market' ),
@@ -52,32 +60,32 @@ function market_widgets_init() {
 		'id'            => 'sidebar-1',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
-		'before_title'  => '<h1 class="widget-title">',
-		'after_title'   => '</h1>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
 	) );
 	register_sidebar( array(
 		'name'          => __( 'Footer Left', 'market' ),
 		'id'            => 'sidebar-2',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
-		'before_title'  => '<h1 class="widget-title">',
-		'after_title'   => '</h1>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
 	) );
 	register_sidebar( array(
 		'name'          => __( 'Footer Center', 'market' ),
 		'id'            => 'sidebar-3',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
-		'before_title'  => '<h1 class="widget-title">',
-		'after_title'   => '</h1>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
 	) );
 	register_sidebar( array(
 		'name'          => __( 'Footer Right', 'market' ),
 		'id'            => 'sidebar-4',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
-		'before_title'  => '<h1 class="widget-title">',
-		'after_title'   => '</h1>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>',
 	) );
 }
 add_action( 'widgets_init', 'market_widgets_init' );
@@ -88,7 +96,8 @@ add_action('optionsframework_custom_scripts', 'optionsframework_custom_scripts')
 function market_scripts() {
 	wp_enqueue_style( 'market-fonts', '//fonts.googleapis.com/css?family=Open+Sans:300,400,700,600' );
 	wp_enqueue_style( 'market-basic-style', get_stylesheet_uri() );
-	if ( (function_exists( 'of_get_option' )) && (of_get_option('sidebar-layout', true) != 1) ) {
+
+    if ( (function_exists( 'of_get_option' )) && (of_get_option('sidebar-layout', true) != 1) ) {
 		if (of_get_option('sidebar-layout', true) ==  'right') {
 			wp_enqueue_style( 'market-layout', get_template_directory_uri()."/css/layouts/content-sidebar.css" );
 		}
@@ -124,7 +133,11 @@ function market_scripts() {
 			
 	wp_enqueue_script( 'market-custom-js', get_template_directory_uri() . '/js/custom.js', array('jquery') );
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+	//external.js
+    wp_enqueue_script( 'market-externaljs', get_template_directory_uri() . '/js/external.js', array('jquery'), '20120206', true );
+
+
+    if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 
@@ -183,7 +196,7 @@ if (class_exists('woocommerce')) {
 		ob_start();
 		
 		?>
-		<a class="cart-contents" href="<?php echo $woocommerce->cart->get_cart_url(); ?>" title="<?php _e('View your shopping cart', 'woothemes'); ?>"><?php echo sprintf(_n('%d item', '%d items', $woocommerce->cart->cart_contents_count, 'woothemes'), $woocommerce->cart->cart_contents_count);?> - <?php echo $woocommerce->cart->get_cart_total(); ?></a>
+		<a class="cart-contents" href="<?php echo $woocommerce->cart->get_cart_url(); ?>" title="<?php esc_html_e('View your shopping cart', 'woothemes'); ?>"><?php echo sprintf(_n('%d item', '%d items', $woocommerce->cart->cart_contents_count, 'woothemes'), $woocommerce->cart->cart_contents_count);?> - <?php echo $woocommerce->cart->get_cart_total(); ?></a>
 		<?php
 		
 		$fragments['a.cart-contents'] = ob_get_clean();
@@ -225,7 +238,15 @@ if (class_exists('woocommerce')) {
 /**
  * Custom Functions for this theme.
  */
+/**
+ * Include the Custom Functions of the Theme.
+ */
+require get_template_directory() . '/framework/theme-functions.php';
+/**
+ * Implement the Custom CSS Mods.
+ */
+require get_template_directory() . '/inc/css-mods.php';
 require get_template_directory() . '/inc/template-tags.php';
 require get_template_directory() . '/inc/extras.php';
-require get_template_directory() . '/inc/customizer.php';
+require get_template_directory() . '/framework/customizer/_init.php';
 require get_template_directory() . '/inc/jetpack.php';

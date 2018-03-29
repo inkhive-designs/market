@@ -45,22 +45,22 @@ get_header(); ?>
 							printf( __( 'Year: %s', 'market' ), '<span>' . get_the_date( 'Y' ) . '</span>' );
 
 						elseif ( is_tax( 'post_format', 'post-format-aside' ) ) :
-							_e( 'Asides', 'market' );
+                            esc_html_e( 'Asides', 'market' );
 
 						elseif ( is_tax( 'post_format', 'post-format-image' ) ) :
-							_e( 'Images', 'market');
+                            esc_html_e( 'Images', 'market');
 
 						elseif ( is_tax( 'post_format', 'post-format-video' ) ) :
-							_e( 'Videos', 'market' );
+                            esc_html_e( 'Videos', 'market' );
 
 						elseif ( is_tax( 'post_format', 'post-format-quote' ) ) :
-							_e( 'Quotes', 'market' );
+                            esc_html_e( 'Quotes', 'market' );
 
 						elseif ( is_tax( 'post_format', 'post-format-link' ) ) :
-							_e( 'Links', 'market' );
+                            esc_html_e( 'Links', 'market' );
 
 						else :
-							_e( 'Archives', 'market' );
+                            esc_html_e( 'Archives', 'market' );
 
 						endif;
 					?>

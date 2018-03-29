@@ -59,4 +59,14 @@ Version 2.0.1.3
 	
 VERSION 2.0.2
 
-	i) WooCommerce 3.0 Fix 	
+	i) WooCommerce 3.0 Fix
+
+Version: 2.1.0
+
+    i) Custom logo added.
+    ii) Framework updated.
+    iii) Hide title and description bug fixed.
+    iv) Social Icons minor bug fixed.
+    v) Top bar menu bug fixed.
+    vi) Site title color, description bug fixed.
+    vii) Slider minor bug fixed.
