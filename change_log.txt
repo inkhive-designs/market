@@ -70,3 +70,7 @@ Version: 2.1.0
     v) Top bar menu bug fixed.
     vi) Site title color, description bug fixed.
     vii) Slider minor bug fixed.
+
+Version: 2.1.1
+
+    i) Search form unwanted issue fixed.
